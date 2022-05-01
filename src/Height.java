@@ -8,9 +8,9 @@ public class Height  extends JPanel{
     private JSlider heightSlider;
 
     public Height(){
-        heightSlider = new JSlider(JSlider.VERTICAL, 0, 200,0);
-        heightSlider.setMajorTickSpacing(50);
-        heightSlider.setMinorTickSpacing(15);
+        heightSlider = new JSlider(140, 190);
+        heightSlider.setMajorTickSpacing(10);
+        heightSlider.setMinorTickSpacing(4);
         heightSlider.setPaintTicks(true);
         heightSlider.setPaintLabels(true);
         heightLabel =new JLabel("Height: ");

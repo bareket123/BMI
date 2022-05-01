@@ -14,6 +14,7 @@ public class PersonData extends JPanel {
         this.setLayout(null);
         firstName = new JLabel("First name:");
         firstName.setBounds (10,0,500,50);
+        //firstName.setFont(new Font("Ariel",Font.ITALIC,24));
         enterFirstName = new JTextField();
         enterFirstName.setBounds(80 ,20, 100,20);
         lastName = new JLabel("Last name:");
