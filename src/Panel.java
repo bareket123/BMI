@@ -7,15 +7,15 @@ public class Panel extends JPanel {
        // this.setBackground(Color.getHSBColor(2,25,29));
         this.setLayout( new BorderLayout());
         this.setBackground(Color.PINK);
-        this.setPreferredSize(new Dimension(2000,1000));
+        this.setPreferredSize(new Dimension(Constants.GENERAL_PANEL_WIDTH,Constants.GENERAL_PANEL_HEIGHT));
         PersonData personData = new PersonData();
         Gender gender= new Gender();
-        Height heightSlider=new Height();
+        UserHeight userHeightSlider =new UserHeight();
         BodyStructure bodyStructure=new BodyStructure();
         UserWeight userWeight=new UserWeight();
         add(personData,BorderLayout.NORTH);
         add(gender,BorderLayout.SOUTH);
-        add(heightSlider,BorderLayout.CENTER);
+        add(userHeightSlider,BorderLayout.CENTER);
         add(bodyStructure,BorderLayout.EAST);
        add(userWeight,BorderLayout.WEST);
     }

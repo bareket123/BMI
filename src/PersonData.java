@@ -19,11 +19,11 @@ public class PersonData extends JPanel {
         enterFirstName.setBounds(80 ,20, 100,20);
         lastName = new JLabel("Last name:");
         lastName.setBounds(10,35,500,50);
-        enterLastName =new JTextField(5);
+        enterLastName =new JTextField(Constants.TEXT_FILED_COLUMNS);
         enterLastName.setBounds(80 ,50, 100,20);
         age = new JLabel("Age: ");
         age.setBounds(10,65,500,50);
-        enterAge=new JTextField(5);
+        enterAge=new JTextField(Constants.TEXT_FILED_COLUMNS);
         enterAge.setBounds(80 ,80, 100,20);
 
         // e.addActionListener(new TempListener());
@@ -33,18 +33,9 @@ public class PersonData extends JPanel {
         add(enterLastName);
         add(age);
         add(enterAge);
-        setPreferredSize(new Dimension(800,700));
+        setPreferredSize(new Dimension(Constants.PERSON_DATA_PANEL_WIDTH,Constants.PERSON_DATA_PANEL_HEIGHT));
         setBackground(Color.PINK);
-        /*
 
-
-
-
-       // setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        setBackground(Color.pink);
-
-         */
     }
 /*
     // Represents an action listener for the first and last name,age input field.

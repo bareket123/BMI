@@ -40,7 +40,7 @@ public class BodyStructure extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(large);
         setBackground(Color.PINK);
-        setPreferredSize(new Dimension(300, 100));
+        setPreferredSize(new Dimension(Constants.BODY_STRUCTURE_PANEL_WIDTH, Constants.BODY_STRUCTURE_PANEL_HEIGHT));
     }
 
     //  Represents the listener for all radio buttons
