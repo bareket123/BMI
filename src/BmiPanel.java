@@ -16,7 +16,6 @@ public class BmiPanel extends JPanel {
         UserHeight userHeightSlider = new UserHeight();
         UserWeight userWeight = new UserWeight();
         userHeightSlider.add(userWeight);
-
         submit = new JButton("Submit");
         submit.setBackground(Color.RED);
         exit =new JButton("Exit");

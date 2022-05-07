@@ -10,8 +10,8 @@ public class Constants {
     public static final int USER_HEIGHT_PANEL_HEIGHT=500;
     public static final int BODY_STRUCTURE_PANEL_WIDTH=700;
     public static final int BODY_STRUCTURE_PANEL_HEIGHT=800;
-    public static final int USER_WEIGHT_PANEL_WIDTH=50;
-    public static final int USER_WEIGHT_PANEL_HEIGHT=50;
+    public static final int USER_WEIGHT_PANEL_WIDTH=200;
+    public static final int USER_WEIGHT_PANEL_HEIGHT=200;
     public static final int CONVERSION_CENTIMETER_TO_METER=100;
     public static final int BUTTON_PANEL_WIDTH=50;
     public static final int BUTTON_PANEL_HEIGHT=40;

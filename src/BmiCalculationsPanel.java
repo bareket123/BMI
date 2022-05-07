@@ -31,7 +31,7 @@ public class BmiCalculationsPanel extends JPanel {
         bmiStatus.setAlignmentX(Component.LEFT_ALIGNMENT);
         idealWeight.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.setBackground(Color.MAGENTA);
-        this.setPreferredSize(new Dimension(50,50));
+        this.setPreferredSize(new Dimension(400,400));
 
          this.add(bmiResult);
          this.add(bmiStatus);

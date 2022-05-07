@@ -21,14 +21,14 @@ public class UserHeight extends JPanel{
         heightSlider.setFont(new Font("Ariel",Font.PLAIN,24));
         heightSlider.setBackground(Color.green);
         heightSlider.setAlignmentX(Component.LEFT_ALIGNMENT);
-        heightSlider.setPreferredSize(new Dimension(30,400));
+        heightSlider.setPreferredSize(new Dimension(30,100));
 
         this.setBackground(Color.YELLOW);
         this.setPreferredSize(new Dimension(Constants.USER_HEIGHT_PANEL_WIDTH,Constants.USER_HEIGHT_PANEL_HEIGHT));
-        add(Box.createRigidArea(new Dimension(0, 300)));
+        add(Box.createRigidArea(new Dimension(0, 50)));
         add(heightLabel);
         add(heightSlider);
-        add(Box.createRigidArea(new Dimension(0, 100)));
+       // add(Box.createRigidArea(new Dimension(0, 100)));
 
     }
 
