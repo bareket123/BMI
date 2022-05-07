@@ -2,12 +2,20 @@ import javax.swing.*;
 
 public class Bmi {
     public static void main(String[] args) {
-           JFrame frame = new JFrame ("BMI");
+
+        JFrame frame = new JFrame ("BMI");
+          try {
+
            frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-             Panel panel=new Panel();
+              frame.setVisible(true);
+               BmiPanel panel=new BmiPanel();
                frame.getContentPane().add(panel);
                 frame.pack();
-                frame.setVisible(true);
+
+
+          }catch (Exception e){
+              e.printStackTrace();
+          }
             }
         }
 

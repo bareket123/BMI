@@ -3,29 +3,41 @@ import java.util.Scanner;
 
 public class Cal {
 
-    public static void main(String[] args) {
-        Scanner keyboard  = new  Scanner (System.in);
+    public static void main(String[] args) throws Exception {
+        calculateBMI();
+    }
 
-        int feet, inches, totalHeightInInches = 0;
-        double totalBMI ,weight ;
-        final int BMI_CONSTANT_VALUE=703;
+    private static void calculateBMI() throws Exception {
+        System.out.print("Please enter your weight in kg: ");
+        Scanner s = new Scanner(System.in);
+        float weight = s.nextFloat();
+        System.out.print("Please enter your height in cm: ");
+        float height = s.nextFloat();
+        float bmi =weight/(height*height);
+        System.out.println("Your BMI is: "+bmi);
+        printBMICategory(bmi);
 
-        System.out.println("what is your weight?");
-         weight = keyboard.nextInt();
+    }
 
-        System.out.println("what is your height?");
-        System.out.println("Feet:");
-        feet = keyboard.nextInt();
-
-        System.out.println("inches:");
-        inches =  keyboard.nextInt();
-
-        totalBMI = (weight * BMI_CONSTANT_VALUE) / (Math.pow(totalHeightInInches, 2));
-
-        DecimalFormat fmt = new DecimalFormat("0.##");
-        System.out.println("your current BMI is: " + fmt.format(totalBMI));
-
-
+    private static void printBMICategory(float bmi) {
+        if (bmi < 15) {
+            System.out.println("You are Anorexic");
+        }
+        else if (bmi < 18.5) {
+            System.out.println("You are Underweight ");
+        }
+        else if (bmi < 24.9) {
+            System.out.println("You are Normal ");
+        }
+        else if (bmi < 29.9) {
+            System.out.println("You are Overweight ");
+        }
+        else if (bmi < 35) {
+            System.out.println("You are Obese ");
+        }
+        else {
+            System.out.println("You are Extreme Obese ");
+        }
 
     }
 }

@@ -8,24 +8,47 @@ public class UserHeight extends JPanel{
     private JSlider heightSlider;
 
     public UserHeight(){
-        heightSlider = new JSlider(140, 190);
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        heightSlider = new JSlider(JSlider.VERTICAL,140,190,165);
+        heightLabel =new JLabel("Height: ");
+        heightLabel.setFont(new Font("Ariel",Font.BOLD,24));
+        heightLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
+
         heightSlider.setMajorTickSpacing(10);
-        heightSlider.setMinorTickSpacing(4);
+        heightSlider.setMinorTickSpacing(1);
         heightSlider.setPaintTicks(true);
         heightSlider.setPaintLabels(true);
-        heightLabel =new JLabel("Height: ");
-        heightLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        this.setBackground(Color.PINK);
+        heightSlider.setFont(new Font("Ariel",Font.PLAIN,24));
+        heightSlider.setBackground(Color.green);
+        heightSlider.setAlignmentX(Component.LEFT_ALIGNMENT);
+        heightSlider.setPreferredSize(new Dimension(30,400));
+
+        this.setBackground(Color.YELLOW);
         this.setPreferredSize(new Dimension(Constants.USER_HEIGHT_PANEL_WIDTH,Constants.USER_HEIGHT_PANEL_HEIGHT));
+        add(Box.createRigidArea(new Dimension(0, 300)));
         add(heightLabel);
         add(heightSlider);
+        add(Box.createRigidArea(new Dimension(0, 100)));
 
     }
 
+    public JLabel getHeightLabel() {
+        return heightLabel;
+    }
 
+    public void setHeightLabel(JLabel heightLabel) {
+        this.heightLabel = heightLabel;
+    }
 
+    public JSlider getHeightSlider() {
+        return heightSlider;
+    }
 
-//  Represents the listener for all three sliders.
+    public void setHeightSlider(JSlider heightSlider) {
+        this.heightSlider = heightSlider;
+    }
+
+    //  Represents the listener for all three sliders.
 private class SliderListener implements ChangeListener {
         private int currentHeight;
 
