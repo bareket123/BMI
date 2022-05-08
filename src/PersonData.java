@@ -7,7 +7,7 @@ public class PersonData extends JPanel {
 
     private JLabel firstName, lastName, age;
     private JTextField enterFirstName,enterLastName,enterAge  ;
-//  Constructor: Sets up the main GUI components.
+
 
     public PersonData() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -15,25 +15,32 @@ public class PersonData extends JPanel {
         firstName.setFont(new Font("Ariel",Font.BOLD,24));
         enterFirstName = new JTextField(Constants.TEXT_FILED_COLUMNS);
         enterFirstName.setMaximumSize( enterFirstName.getPreferredSize());
+        Font bigFont = enterFirstName.getFont().deriveFont(Font.PLAIN, 25f);
+        enterFirstName.setFont(bigFont);
         lastName = new JLabel("Last name:");
         lastName.setFont(new Font("Ariel",Font.BOLD,24));
         enterLastName =new JTextField(Constants.TEXT_FILED_COLUMNS);
         enterLastName.setMaximumSize(enterLastName.getPreferredSize());
+        enterLastName.setFont(bigFont);
         age = new JLabel("Age: ");
         age.setFont(new Font("Ariel",Font.BOLD,24));
         enterAge=new JTextField(Constants.TEXT_FILED_COLUMNS);
         enterAge.setMaximumSize(enterAge.getPreferredSize());
+        enterAge.setFont(bigFont);
 
-        add(Box.createRigidArea(new Dimension(0, 300)));
+
+        add(Box.createRigidArea(new Dimension(0, 200)));
         add(firstName);
         add(enterFirstName);
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(lastName);
         add(enterLastName);
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(age);
         add(enterAge);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(20, 100)));
         setPreferredSize(new Dimension(Constants.PERSON_DATA_PANEL_WIDTH,Constants.PERSON_DATA_PANEL_HEIGHT));
-        setBackground(Color.GRAY);
+        setBackground(Color.PINK);
 
     }
 

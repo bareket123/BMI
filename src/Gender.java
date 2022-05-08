@@ -10,21 +10,25 @@ public class Gender extends JPanel {
     public Gender () {
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         female = new JCheckBox ("female");
-        female.setFont(new Font("Ariel",Font.PLAIN,24));
+        female.setFont(new Font("Ariel",Font.PLAIN,30));
+        female.setBackground(Color.PINK);
         male = new JCheckBox ("male");
-        male.setFont(new Font("Ariel",Font.PLAIN,24));
+        male.setFont(new Font("Ariel",Font.PLAIN,30));
+        male.setBackground(Color.PINK);
         genderLabel=new JLabel("Gender: ");
-        genderLabel.setFont(new Font("Ariel",Font.BOLD,24));
+        genderLabel.setFont(new Font("Ariel",Font.BOLD,35));
 
         genderLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         ButtonListener listener = new ButtonListener();
         female.addItemListener (listener);
         male.addItemListener (listener);
         this.add(genderLabel);
+        add(Box.createRigidArea(new Dimension(0, 20)));
         this.add (female);
+        add(Box.createRigidArea(new Dimension(0, 10)));
         this.add (male);
         this.setPreferredSize (new Dimension(Constants.GENDER_PANEL_WIDTH, Constants.GENDER_PANEL_HEIGHT));
-        this.setBackground(Color.MAGENTA);
+        this.setBackground(Color.PINK);
 
     }
 

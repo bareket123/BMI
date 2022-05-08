@@ -7,13 +7,15 @@ public class UserWeight extends JPanel {
 
     public UserWeight(){
         this.setLayout(new FlowLayout());
-        userWeight=new JLabel("your weight is: ");
+
+        userWeight=new JLabel("please enter your weight: ");
         userWeight.setFont(new Font("Ariel",Font.PLAIN,30));
         userWeight.setBackground(Color.PINK);
-        enterUserWeight = new JTextField(Constants.TEXT_FILED_COLUMNS);
+        enterUserWeight = new JTextField(5);
         enterUserWeight.setMaximumSize( enterUserWeight.getPreferredSize());
-        enterUserWeight.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-        this.setBackground(Color.RED);
+        Font bigFont = enterUserWeight.getFont().deriveFont(Font.PLAIN, 25f);
+        enterUserWeight.setFont(bigFont);
+        this.setBackground(Color.PINK);
         this.setPreferredSize(new Dimension(Constants.USER_WEIGHT_PANEL_WIDTH,Constants.USER_WEIGHT_PANEL_HEIGHT));
         add(userWeight);
         add(enterUserWeight);

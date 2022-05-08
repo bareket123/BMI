@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class BodyStructure extends JPanel {
     private JLabel bodyStructureTitle;
     private JRadioButton small, medium, large;
+    private ButtonGroup buttonGroup;
     private double slimness;
 
 
@@ -24,13 +25,13 @@ public class BodyStructure extends JPanel {
         large = new JRadioButton("Large");
         large.setBackground(Color.PINK);
         large.setFont(new Font("David",Font.BOLD,50));
-        ButtonGroup group = new ButtonGroup();
+        this.buttonGroup = new ButtonGroup();
         add(Box.createRigidArea(new Dimension(0, 30)));
-        group.add(small);
+        buttonGroup.add(small);
         add(Box.createRigidArea(new Dimension(0, 100)));
-        group.add(medium);
+        buttonGroup.add(medium);
         add(Box.createRigidArea(new Dimension(0, 100)));
-        group.add(large);
+        buttonGroup.add(large);
 
         QuoteListener listener = new QuoteListener();
         small.addActionListener(listener);
@@ -46,7 +47,7 @@ public class BodyStructure extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(large);
 
-        setBackground(Color.WHITE);
+        setBackground(Color.PINK);
         setPreferredSize(new Dimension(Constants.BODY_STRUCTURE_PANEL_WIDTH, Constants.BODY_STRUCTURE_PANEL_HEIGHT));
     }
 
@@ -91,6 +92,14 @@ public class BodyStructure extends JPanel {
         this.slimness = slimness;
     }
 
+    public ButtonGroup getButtonGroup() {
+        return buttonGroup;
+    }
+
+    public void setButtonGroup(ButtonGroup buttonGroup) {
+        this.buttonGroup = buttonGroup;
+    }
+
     //  Represents the listener for all radio buttons
     private class QuoteListener implements ActionListener {
 
@@ -109,6 +118,7 @@ public class BodyStructure extends JPanel {
 
         }
     }
+
 
 }
 

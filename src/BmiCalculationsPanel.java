@@ -9,10 +9,14 @@ public class BmiCalculationsPanel extends JPanel {
     private JLabel idealWeight;
 
 
-    public BmiCalculationsPanel(PersonData personData , Gender gender,UserWeight userWeight,UserHeight userHeightSlider,BodyStructure bodyStructure){
+    public BmiCalculationsPanel(PersonData personData ,UserWeight userWeight,UserHeight userHeightSlider,BodyStructure bodyStructure){
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.bmiResult=new JLabel();
+        bmiResult.setFont(new Font("Ariel",Font.BOLD,24));
         this.idealWeight=new JLabel();
+        idealWeight.setFont(new Font("Ariel",Font.BOLD,24));
         this.bmiStatus=new JLabel();
+        bmiStatus.setFont(new Font("Ariel",Font.BOLD,24));
         double realWeight,realHeight;
         String text= userWeight.getEnterUserWeight().getText();
         realWeight=Double.parseDouble(text);
@@ -25,16 +29,19 @@ public class BmiCalculationsPanel extends JPanel {
         df.setMaximumFractionDigits(3);//set 3 digit after decimal point
         bmiResult.setText("your bmi is: " +df.format(finalBmi));
         bmiStatus.setText("you are: "+setBmiStatusLabel(finalBmi));
-        idealWeight.setText("the ideal weight for you is: " + idealWeightForUser);
+        idealWeight.setText("the ideal weight for you is: " + df.format(idealWeightForUser));
         idealWeight.setAlignmentX(Component.LEFT_ALIGNMENT);
         userWeight.add(idealWeight);
         bmiStatus.setAlignmentX(Component.LEFT_ALIGNMENT);
         idealWeight.setAlignmentX(Component.LEFT_ALIGNMENT);
-        this.setBackground(Color.MAGENTA);
+        this.setBackground(Color.PINK);
         this.setPreferredSize(new Dimension(400,400));
 
+        add(Box.createRigidArea(new Dimension(0, 10)));
          this.add(bmiResult);
+        add(Box.createRigidArea(new Dimension(0, 10)));
          this.add(bmiStatus);
+        add(Box.createRigidArea(new Dimension(0, 10)));
     }
 
 
@@ -59,6 +66,7 @@ public class BmiCalculationsPanel extends JPanel {
     }
     private double calculateIdealWeight(double userHeight,double userAge,double slimness){
         return (userHeight-100+(userAge/10))*0.9*slimness;
+
     }
 
 
@@ -76,5 +84,13 @@ public class BmiCalculationsPanel extends JPanel {
 
     public void setIdealWeight(JLabel idealWeight) {
         this.idealWeight = idealWeight;
+    }
+
+    public JLabel getBmiStatus() {
+        return bmiStatus;
+    }
+
+    public void setBmiStatus(JLabel bmiStatus) {
+        this.bmiStatus = bmiStatus;
     }
 }
