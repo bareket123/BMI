@@ -10,6 +10,7 @@ public class PersonData extends JPanel {
 
 
     public PersonData() {
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         firstName = new JLabel("First name:");
         firstName.setFont(new Font("Ariel",Font.BOLD,24));
@@ -92,20 +93,7 @@ public class PersonData extends JPanel {
         this.enterAge = enterAge;
     }
 
-    /*
-    // Represents an action listener for the first and last name,age input field.
-    private class DataListener implements ActionListener {
-        // Performs conversion when the enter key is pressed in text field.
-        public void actionPerformed(ActionEvent event) {
-            int fahrenheitTemp, celsiusTemp;
-            String text = enterFirstName.getText();
-            fahrenheitTemp = Integer.parseInt (text);
-            celsiusTemp = (fahrenheitTemp-32) * 5/9;
-            resultLabel.setText (Integer.toString (celsiusTemp));
 
-        }
-
- */
     }
 
 

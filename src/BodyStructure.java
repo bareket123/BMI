@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BodyStructure extends JPanel {
+
     private JLabel bodyStructureTitle;
     private JRadioButton small, medium, large;
     private ButtonGroup buttonGroup;
@@ -103,7 +104,7 @@ public class BodyStructure extends JPanel {
     //  Represents the listener for all radio buttons
     private class QuoteListener implements ActionListener {
 
-        //  Sets the text of the label depending on which radio
+        //  Sets the slimness value depending on which radio
         //  button was pressed.
         public void actionPerformed(ActionEvent event) {
             Object source = event.getSource();

@@ -54,7 +54,7 @@ private class SliderListener implements ChangeListener {
 
     public void stateChanged(ChangeEvent event) {
         this.currentHeight = heightSlider.getValue();
-        heightLabel.setText("your height is " + currentHeight);
+        heightLabel.setText("your height is " + this.currentHeight);
 
 
 
