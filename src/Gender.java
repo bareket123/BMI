@@ -1,51 +1,72 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Gender extends JPanel {
-    private JCheckBox female, male;
     private JLabel genderLabel;
+    private JRadioButton female, male;
+    private ButtonGroup buttonGroup;
 
-    public Gender () {
-        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-        female = new JCheckBox ("female");
-        female.setFont(new Font("Ariel",Font.PLAIN,30));
+
+    public Gender() {
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setPreferredSize(new Dimension(Constants.GENDER_PANEL_WIDTH, Constants.GENDER_PANEL_HEIGHT));
+        this.setBackground(Color.PINK);
+
+
+        genderLabel = new JLabel("Gender: ");
+        genderLabel.setFont(new Font("Lucida Fax", Font.PLAIN, 35));
+
+        female = new JRadioButton("female");
+        female.setFont(new Font("Lucida Fax", Font.BOLD, 30));
         female.setBackground(Color.PINK);
-        male = new JCheckBox ("male");
-        male.setFont(new Font("Ariel",Font.PLAIN,30));
+        female.setForeground(Color.MAGENTA);
+        female.setEnabled(true);
+        male = new JRadioButton("male");
+        male.setFont(new Font("Lucida Fax", Font.BOLD, 30));
         male.setBackground(Color.PINK);
-        genderLabel=new JLabel("Gender: ");
-        genderLabel.setFont(new Font("Ariel",Font.BOLD,35));
+        male.setForeground(Color.BLUE);
+        male.setEnabled(true);
+         ButtonListener buttonListener=new ButtonListener();
+        this.buttonGroup = new ButtonGroup();
+        buttonGroup.add(male);
+        buttonGroup.add(female);
+       female.addActionListener(buttonListener);
+       male.addActionListener(buttonListener);
 
-        genderLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        ButtonListener listener = new ButtonListener();
-        female.addItemListener (listener);
-        male.addItemListener (listener);
         this.add(genderLabel);
         add(Box.createRigidArea(new Dimension(0, 20)));
-        this.add (female);
+        this.add(male);
         add(Box.createRigidArea(new Dimension(0, 10)));
-        this.add (male);
-        this.setPreferredSize (new Dimension(Constants.GENDER_PANEL_WIDTH, Constants.GENDER_PANEL_HEIGHT));
-        this.setBackground(Color.PINK);
+        this.add(female);
+
 
     }
 
-    public JCheckBox getFemale() {
+    public JRadioButton getFemale() {
         return female;
     }
 
-    public void setFemale(JCheckBox female) {
+    public void setFemale(JRadioButton female) {
         this.female = female;
     }
 
-    public JCheckBox getMale() {
+    public JRadioButton getMale() {
         return male;
     }
 
-    public void setMale(JCheckBox male) {
+    public void setMale(JRadioButton male) {
         this.male = male;
+    }
+
+    public ButtonGroup getButtonGroup() {
+        return buttonGroup;
+    }
+
+    public void setButtonGroup(ButtonGroup buttonGroup) {
+        this.buttonGroup = buttonGroup;
     }
 
     public JLabel getGenderLabel() {
@@ -56,21 +77,22 @@ public class Gender extends JPanel {
         this.genderLabel = genderLabel;
     }
 
-    //  Represents the listener for both check boxes.
-    private class ButtonListener implements ItemListener {
+    //  Represents the listener for all radio buttons
+    private class ButtonListener implements ActionListener {
 
-        //  Updates the style of the label font style.
-        public void itemStateChanged (ItemEvent event) {
-            if (male.isSelected()){
-                female.setEnabled(false);
-            }
+        //  Sets the slimness value depending on which radio
+        //  button was pressed.
+        public void actionPerformed(ActionEvent event) {
+            Object source = event.getSource();
 
-           else if(female.isSelected()) {
-               male.setEnabled(false);
-            }
+
+
         }
+
     }
+
 }
+
 
 
 

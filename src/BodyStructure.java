@@ -1,5 +1,3 @@
-import javafx.scene.control.RadioButton;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,41 +13,39 @@ public class BodyStructure extends JPanel {
 
     public BodyStructure() {
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        setBackground(Color.PINK);
+        setPreferredSize(new Dimension(Constants.BODY_STRUCTURE_PANEL_WIDTH, Constants.BODY_STRUCTURE_PANEL_HEIGHT));
         bodyStructureTitle = new JLabel("body structure:");
-        bodyStructureTitle.setFont(new Font("Ariel", Font.BOLD, 24));
+        bodyStructureTitle.setFont(new Font("Lucida Fax", Font.BOLD, 24));
         small = new JRadioButton("Small");
         small.setBackground(Color.PINK);
-        small.setFont(new Font("David",Font.BOLD,20));
+        small.setFont(new Font("Lucida Fax",Font.BOLD,20));
         medium = new JRadioButton("Medium");
         medium.setBackground(Color.PINK);
-        medium.setFont(new Font("David",Font.BOLD,30));
+        medium.setFont(new Font("Lucida Fax",Font.BOLD,30));
         large = new JRadioButton("Large");
         large.setBackground(Color.PINK);
-        large.setFont(new Font("David",Font.BOLD,50));
+        large.setFont(new Font("Lucida Fax",Font.BOLD,50));
         this.buttonGroup = new ButtonGroup();
-        add(Box.createRigidArea(new Dimension(0, 30)));
         buttonGroup.add(small);
-        add(Box.createRigidArea(new Dimension(0, 100)));
         buttonGroup.add(medium);
-        add(Box.createRigidArea(new Dimension(0, 100)));
         buttonGroup.add(large);
 
-        QuoteListener listener = new QuoteListener();
+        ButtonListener listener = new ButtonListener();
         small.addActionListener(listener);
         medium.addActionListener(listener);
         large.addActionListener(listener);
 
-        add(Box.createRigidArea(new Dimension(300, 30)));
+        add(Box.createRigidArea(new Dimension(170, 170)));
         add(bodyStructureTitle);
-        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(small);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(medium);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(large);
 
-        setBackground(Color.PINK);
-        setPreferredSize(new Dimension(Constants.BODY_STRUCTURE_PANEL_WIDTH, Constants.BODY_STRUCTURE_PANEL_HEIGHT));
+
     }
 
     public JLabel getBodyStructureTitle() {
@@ -102,7 +98,7 @@ public class BodyStructure extends JPanel {
     }
 
     //  Represents the listener for all radio buttons
-    private class QuoteListener implements ActionListener {
+    private class ButtonListener implements ActionListener {
 
         //  Sets the slimness value depending on which radio
         //  button was pressed.
