@@ -24,23 +24,22 @@ public class Gender extends JPanel {
         female.setBackground(Color.PINK);
         female.setForeground(Color.MAGENTA);
         female.setEnabled(true);
+
         male = new JRadioButton("male");
         male.setFont(new Font("Lucida Fax", Font.BOLD, 30));
         male.setBackground(Color.PINK);
         male.setForeground(Color.BLUE);
         male.setEnabled(true);
-         ButtonListener buttonListener=new ButtonListener();
+
         this.buttonGroup = new ButtonGroup();
         buttonGroup.add(male);
         buttonGroup.add(female);
-       female.addActionListener(buttonListener);
-       male.addActionListener(buttonListener);
 
-        this.add(genderLabel);
+        add(genderLabel);
         add(Box.createRigidArea(new Dimension(0, 20)));
-        this.add(male);
+        add(male);
         add(Box.createRigidArea(new Dimension(0, 10)));
-        this.add(female);
+        add(female);
 
 
     }
@@ -77,19 +76,8 @@ public class Gender extends JPanel {
         this.genderLabel = genderLabel;
     }
 
-    //  Represents the listener for all radio buttons
-    private class ButtonListener implements ActionListener {
-
-        //  Sets the slimness value depending on which radio
-        //  button was pressed.
-        public void actionPerformed(ActionEvent event) {
-            Object source = event.getSource();
 
 
-
-        }
-
-    }
 
 }
 

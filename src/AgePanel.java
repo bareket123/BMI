@@ -14,24 +14,23 @@ public class AgePanel extends JPanel {
         ageLabel = new JLabel("Age: ");
         ageLabel.setFont(new Font("Lucida Fax",Font.BOLD,24));
         ageLabel.setBackground(Color.PINK);
+
         enterAge=new JTextField(Constants.TEXT_FILED_COLUMNS);
         enterAge.setMaximumSize(new Dimension(50,25));
         enterAge.setFont(ageLabel.getFont().deriveFont(Font.PLAIN, 18f));
 
-
-
-        this.add(ageLabel);
-        this.add(enterAge);
+       add(ageLabel);
+       add(enterAge);
 
 
     }
 
-    public JLabel getAge() {
+    public JLabel getAgeLabel() {
         return ageLabel;
     }
 
-    public void setAge(JLabel age) {
-        this.ageLabel = age;
+    public void setAgeLabel(JLabel ageLabel) {
+        this.ageLabel = ageLabel;
     }
 
     public JTextField getEnterAge() {
@@ -41,7 +40,4 @@ public class AgePanel extends JPanel {
     public void setEnterAge(JTextField enterAge) {
         this.enterAge = enterAge;
     }
-
-
-
 }

@@ -9,8 +9,6 @@ public class PersonData extends JPanel {
     private Gender genderPanel;
 
     public PersonData() {
-
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(Constants.PERSON_DATA_PANEL_WIDTH, Constants.PERSON_DATA_PANEL_HEIGHT));
         setBackground(Color.PINK);
@@ -18,7 +16,6 @@ public class PersonData extends JPanel {
         lastNamePanel = new LastNamePanel();
         agePanel = new AgePanel();
         genderPanel=new Gender();
-
 
         add(Box.createRigidArea(new Dimension(20, 80)));
         add(firstNamePanel);
@@ -63,5 +60,8 @@ public class PersonData extends JPanel {
     public void setGenderPanel(Gender genderPanel) {
         this.genderPanel = genderPanel;
     }
+
+
+
 }
 

@@ -20,22 +20,22 @@ public class BmiPanel extends JPanel {
          bodyStructure = new BodyStructure();
          userHeightSlider = new UserHeight();
 
-
-
-         //defied submit and clear button
         submit = new JButton("Submit");
         submit.setFont(new Font("Ariel",Font.BOLD,20));
         submit.setBackground(Color.WHITE);
         submit.setPreferredSize(new Dimension(100,30));
         submit.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         clear =new JButton("Clear");
         clear.setFont(new Font("Ariel",Font.BOLD,20));
         clear.setPreferredSize(new Dimension(100,30));
         clear.setBackground(Color.WHITE);
         clear.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         SubmitAndClearListener listener =new SubmitAndClearListener();
         submit.addActionListener(listener);
         clear.addActionListener(listener);
+
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.setPreferredSize (new Dimension(Constants.BUTTON_PANEL_WIDTH, Constants.BUTTON_PANEL_HEIGHT));
@@ -43,13 +43,11 @@ public class BmiPanel extends JPanel {
         buttonPanel.add (submit);
         buttonPanel.add (clear);
 
-
-
-            this.add(titlePanel, BorderLayout.NORTH);
-            this.add(buttonPanel, BorderLayout.SOUTH);
-            this.add(personData, BorderLayout.WEST);
-            this.add(userHeightSlider, BorderLayout.EAST);
-            this.add(bodyStructure, BorderLayout.CENTER);
+        add(titlePanel, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.SOUTH);
+        add(personData, BorderLayout.WEST);
+        add(userHeightSlider, BorderLayout.EAST);
+        add(bodyStructure, BorderLayout.CENTER);
 
 
 

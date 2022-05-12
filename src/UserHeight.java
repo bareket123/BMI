@@ -10,12 +10,15 @@ public class UserHeight extends JPanel{
 
     public UserHeight(){
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-        heightSlider = new JSlider(JSlider.VERTICAL,140,190,165);
-        this.userWeightPanel =new UserWeight();
+        this.setBackground(Color.PINK);
+        this.setPreferredSize(new Dimension(Constants.USER_HEIGHT_PANEL_WIDTH,Constants.USER_HEIGHT_PANEL_HEIGHT));
+        userWeightPanel =new UserWeight();
+
         heightLabel =new JLabel("Height: ");
         heightLabel.setFont(new Font("Monospaced",Font.BOLD,24));
         heightLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+        heightSlider = new JSlider(JSlider.VERTICAL,140,190,165);
         heightSlider.setMajorTickSpacing(10);
         heightSlider.setMinorTickSpacing(1);
         heightSlider.setPaintTicks(true);
@@ -25,10 +28,10 @@ public class UserHeight extends JPanel{
         heightSlider.setAlignmentX(Component.LEFT_ALIGNMENT);
         heightSlider.setValue(Constants.HEIGHT_SLIDER_START_VALUE);
         heightSlider.setPreferredSize(new Dimension(100,700 ));
+
         SliderListener sliderListener=new SliderListener();
         heightSlider.addChangeListener(sliderListener);
-        this.setBackground(Color.PINK);
-        this.setPreferredSize(new Dimension(Constants.USER_HEIGHT_PANEL_WIDTH,Constants.USER_HEIGHT_PANEL_HEIGHT));
+
 
         add(Box.createRigidArea(new Dimension(0, 50)));
         add(heightLabel);
@@ -36,9 +39,6 @@ public class UserHeight extends JPanel{
         add(heightSlider);
         add(Box.createRigidArea(new Dimension(100, 50)));
         add(userWeightPanel);
-
-
-
     }
 
     public JLabel getHeightLabel() {

@@ -25,6 +25,7 @@ public class Constants {
     public static final int MEDIUM_SLIMNESS=1;
     public static final double LARGE_SLIMNESS=1.1;
     public static final int HEIGHT_SLIDER_START_VALUE=140;
+    public static final String INVALID_CHARACTERS="[!@#$%&*()_+=|<>?{}\\[\\]~-]";
 
 
 
