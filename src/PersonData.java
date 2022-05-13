@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+
 public class PersonData extends JPanel {
 
     private FirstNamePanel firstNamePanel;
@@ -63,7 +64,6 @@ public class PersonData extends JPanel {
     public void setGenderPanel(Gender genderPanel) {
         this.genderPanel = genderPanel;
     }
-
 
 
 }

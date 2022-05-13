@@ -29,11 +29,16 @@ public class BmiCalculationsPanel extends JPanel {
         bmiStatus.setForeground(Color.RED);
         bmiStatus.setFont(new Font("Ink Free",Font.BOLD,24));
 
-        double finalBmi=calculateBmiResult(userHeightSlider);
-        JTextField userAgeTextFiled=personData.getAgePanel().getEnterAge();
-        double idealWeightForUser=calculateIdealWeight(userHeightSlider.getHeightSlider().getValue(),personData.getAgePanel().getEnterAge(),bodyStructure.getSlimness());
+        //true if names are empty, if so, won't display bmi calculations.
+        boolean isNameEmpty=isNameEmpty(personData.getFirstNamePanel().getEnterFirstName(), personData.getLastNamePanel().getEnterLastName());
+        //true is button is pressed as expected.
+        boolean isGenderButtonPressed=isGenderButtonPressed(personData.getGenderPanel());
 
-        if (checkIfInputValid(idealWeightForUser,finalBmi,userHeightSlider,userAgeTextFiled)){
+        JTextField userAgeTextFiled=personData.getAgePanel().getEnterAge();
+        double finalBmi=calculateBmiResult(userHeightSlider);
+        double idealWeightForUser=calculateIdealWeight(userHeightSlider.getHeightSlider().getValue(),userAgeTextFiled,bodyStructure.getSlimness());
+
+        if (checkIfInputValid(idealWeightForUser,finalBmi,userHeightSlider,userAgeTextFiled,isNameEmpty,isGenderButtonPressed) || bodyStructure.getSlimness()==0){
             //set 3 digit after decimal point
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(3);
@@ -45,6 +50,7 @@ public class BmiCalculationsPanel extends JPanel {
 
             idealWeight.setAlignmentX(Component.LEFT_ALIGNMENT);
             idealWeight.setAlignmentX(Component.LEFT_ALIGNMENT);
+
         }
 
 
@@ -109,37 +115,41 @@ public class BmiCalculationsPanel extends JPanel {
     }
     //check if age or weight is empty or contain characters/special characters
     private boolean isValidInput(JTextField textField){
-       boolean isValidInput=false;
+       boolean isNotValidInput=false;
        //check for special characters like *, !, etc
         Pattern special = Pattern.compile (Constants.INVALID_CHARACTERS);
         Matcher hasSpecial = special.matcher(textField.getText());
 
         if (textField.getText().isEmpty() || hasSpecial.find()){
-           isValidInput=true;
+           isNotValidInput=true;
         }
         for (char character:textField.getText().toCharArray()) {
             if (Character.isAlphabetic(character) ){
-                isValidInput=true;
+                isNotValidInput=true;
                 break;
             }
         }
 
-      return isValidInput;
+      return isNotValidInput;
     }
-    //return false when input invalid and set new warning and instructions labels
-    private boolean checkIfInputValid(double idealWeightForUser,double finalBmi,UserHeight userHeightSlider,JTextField userAge){
-        //check if ideal or bmi is 0 in this case the user enter something wrong
-        boolean valid=true;
-        if (idealWeightForUser==0 || finalBmi==0) {
-            valid=false;
-            userHeightSlider.getUserWeightPanel().getEnterUserWeight().setText(null);
-            userAge.setText(null);
 
-            idealWeight.setVisible(false);
+    //return false when input invalid and set new warning and instructions labels
+    private boolean checkIfInputValid(double idealWeight,double finalBmi,UserHeight slider,JTextField userAge,boolean isNameEmpty,boolean isGenderButtonPressed){
+        boolean valid=true;
+
+        //check if ideal or bmi is 0 in this case the user enter something wrong
+        if (idealWeight==0 || finalBmi==0 || isNameEmpty || !isGenderButtonPressed) {
+            valid=false;
+
+            //slider.getUserWeightPanel().getEnterUserWeight().setText(null);
+           // userAge.setText(null);
+
+            this.idealWeight.setVisible(false);
             bmiStatus.setVisible(false);
             bmiResult.setVisible(false);
 
             JLabel warningLabel = new JLabel("oh no, your input isn't valid!!");
+            JLabel reminderLabel =new JLabel("REMEMBER all form should be filled");
             JLabel clearOrderLabel = new JLabel("please press clear to reset and try again");
 
             warningLabel.setForeground(Color.RED);
@@ -148,12 +158,37 @@ public class BmiCalculationsPanel extends JPanel {
             clearOrderLabel.setForeground(Color.RED);
             clearOrderLabel.setFont(new Font("Kristen ITC", Font.BOLD, 18));
 
+            reminderLabel.setFont(new Font("Kristen ITC", Font.BOLD, 18));
+            reminderLabel.setForeground(Color.RED);
+
+            add(Box.createRigidArea(new Dimension(0, 20)));
             add(warningLabel);
             add(Box.createRigidArea(new Dimension(0, 10)));
             add(clearOrderLabel);
+            add(Box.createRigidArea(new Dimension(0, 5)));
+            add(reminderLabel);
         }
       return valid;
     }
+    //check if first or last name is empty
+    private boolean isNameEmpty(JTextField firstNameText, JTextField lastNameText){
+        boolean isEmpty=false;
+        if (firstNameText.getText().isEmpty() || lastNameText.getText().isEmpty()){
+            isEmpty=true;
+        }
+
+        return isEmpty;
+    }
+    //check if button is pressed
+    private boolean isGenderButtonPressed(Gender gender){
+        boolean pressed=true;
+
+        if (gender.getButtonGroup().getSelection()==null){
+            pressed=false;
+        }
+        return pressed;
+    }
+
 
 
     //getters and setters

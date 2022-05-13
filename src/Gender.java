@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+
 public class Gender extends JPanel {
     private JLabel genderLabel;
     private JRadioButton female, male;
@@ -22,11 +23,13 @@ public class Gender extends JPanel {
         female.setForeground(Color.MAGENTA);
         female.setEnabled(true);
 
+
         male = new JRadioButton("male");
         male.setFont(new Font("Lucida Fax", Font.BOLD, 30));
         male.setBackground(Color.PINK);
         male.setForeground(Color.BLUE);
         male.setEnabled(true);
+
 
         this.buttonGroup = new ButtonGroup();
         buttonGroup.add(male);
@@ -74,7 +77,6 @@ public class Gender extends JPanel {
     public void setGenderLabel(JLabel genderLabel) {
         this.genderLabel = genderLabel;
     }
-
 
 
 

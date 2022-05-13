@@ -24,7 +24,6 @@ public class TitlePanel extends JPanel {
     }
 
     //getters and setters
-
     public JLabel getMainTitleLabel() {
         return mainTitleLabel;
     }

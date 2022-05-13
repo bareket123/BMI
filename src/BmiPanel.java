@@ -52,7 +52,6 @@ public class BmiPanel extends JPanel {
         add(bodyStructure, BorderLayout.CENTER);
 
 
-
     }
     //set up submit button
     private void setSubmitButtonOnClicked(){
