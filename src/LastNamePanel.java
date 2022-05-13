@@ -5,14 +5,17 @@ public class LastNamePanel extends JPanel {
     private JLabel lastName;
     private JTextField enterLastName;
 
+   // Constructor: set up a panel with last name label and text filed for user input
     public LastNamePanel(){
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+        this.setBackground(Color.PINK);
+        this.setPreferredSize(new Dimension(Constants.NAME_PANEL_WIDTH,Constants.NAME_PANEL_HEIGHT));
+
         lastName = new JLabel("Last name:");
         lastName.setFont(new Font("Lucida Fax",Font.BOLD,24));
-        this.setBackground(Color.PINK);
-        this.setPreferredSize(new Dimension(50,40));
         enterLastName =new JTextField(Constants.TEXT_FILED_COLUMNS);
-        enterLastName.setMaximumSize(new Dimension(200,25));
+        enterLastName.setMaximumSize(new Dimension(Constants.TEXT_FILED_WIDTH,Constants.TEXT_FILED_HEIGHT));
+        //set text filed font the same as label font
         enterLastName.setFont(lastName.getFont().deriveFont(Font.PLAIN, 25f));
 
         this.add(lastName);
@@ -21,6 +24,7 @@ public class LastNamePanel extends JPanel {
 
 
     }
+    //getters and setters
 
     public JLabel getLastName() {
         return lastName;

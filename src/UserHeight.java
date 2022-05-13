@@ -8,6 +8,7 @@ public class UserHeight extends JPanel{
     private JSlider heightSlider;
     private UserWeight userWeightPanel;
 
+    //Constructor: set up a panel with height label and slider for user input
     public UserHeight(){
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.setBackground(Color.PINK);
@@ -27,8 +28,9 @@ public class UserHeight extends JPanel{
         heightSlider.setBackground(Color.white);
         heightSlider.setAlignmentX(Component.LEFT_ALIGNMENT);
         heightSlider.setValue(Constants.HEIGHT_SLIDER_START_VALUE);
-        heightSlider.setPreferredSize(new Dimension(100,700 ));
+        heightSlider.setPreferredSize(new Dimension(Constants.SLIDER_WIDTH,Constants.SLIDER_HEIGHT ));
 
+        //add listener
         SliderListener sliderListener=new SliderListener();
         heightSlider.addChangeListener(sliderListener);
 
@@ -41,6 +43,7 @@ public class UserHeight extends JPanel{
         add(userWeightPanel);
     }
 
+    //getters and setters
     public JLabel getHeightLabel() {
         return heightLabel;
     }
@@ -64,7 +67,7 @@ public class UserHeight extends JPanel{
         this.userWeightPanel = userWeightPanel;
     }
 
-//  Represents the listener for all three sliders.
+//  Represents the listener for height slider.
 private class SliderListener implements ChangeListener {
         private int currentHeight;
 

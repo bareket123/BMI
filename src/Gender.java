@@ -1,15 +1,12 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Gender extends JPanel {
     private JLabel genderLabel;
     private JRadioButton female, male;
     private ButtonGroup buttonGroup;
 
-
+//Constructor: set a panel with gender label and some button for male/female
     public Gender() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(Constants.GENDER_PANEL_WIDTH, Constants.GENDER_PANEL_HEIGHT));
@@ -43,6 +40,8 @@ public class Gender extends JPanel {
 
 
     }
+
+    //getters and setters
 
     public JRadioButton getFemale() {
         return female;

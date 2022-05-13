@@ -5,7 +5,7 @@ public class UserWeight extends JPanel {
     private JLabel userWeightLabel;
     private JTextField enterUserWeight;
 
-
+    //Constructor:sets up panel with weight label and text filed for input
     public UserWeight(){
         this.setLayout(new FlowLayout());
         this.setBackground(Color.pink);
@@ -17,7 +17,7 @@ public class UserWeight extends JPanel {
         userWeightLabel.setBackground(Color.PINK);
 
         enterUserWeight = new JTextField(Constants.TEXT_FILED_COLUMNS);
-        enterUserWeight.setMaximumSize(new Dimension(100,25));
+        enterUserWeight.setMaximumSize(new Dimension(Constants.TEXT_FILED_WIDTH,Constants.TEXT_FILED_HEIGHT));
         enterUserWeight.setAlignmentY(Component.TOP_ALIGNMENT);
         enterUserWeight.setFont(userWeightLabel.getFont().deriveFont(Font.PLAIN, 18f));
 
@@ -26,6 +26,7 @@ public class UserWeight extends JPanel {
 
     }
 
+    //getters and setters
     public JLabel getUserWeightLabel() {
         return userWeightLabel;
     }

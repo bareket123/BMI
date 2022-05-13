@@ -5,6 +5,7 @@ public class TitlePanel extends JPanel {
     private JLabel mainTitleLabel;
     private JLabel instructions;
 
+//Constructor: sets up panel with title and instructions labels.
     public TitlePanel(){
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.setBackground(Color.white);
@@ -21,6 +22,8 @@ public class TitlePanel extends JPanel {
         add(mainTitleLabel);
         add(instructions);
     }
+
+    //getters and setters
 
     public JLabel getMainTitleLabel() {
         return mainTitleLabel;

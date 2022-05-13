@@ -6,17 +6,19 @@ public class AgePanel extends JPanel {
     private JLabel ageLabel;
     private JTextField enterAge;
 
-
+//Constructor: sep up a panel with age label and text filed for user input
     public AgePanel(){
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
-        this.setPreferredSize(new Dimension(50,40));
+        this.setPreferredSize(new Dimension(Constants.AGE_PANEL_WIDTH,Constants.AGE_PANEL_HEIGHT));
         this.setBackground(Color.PINK);
+
         ageLabel = new JLabel("Age: ");
         ageLabel.setFont(new Font("Lucida Fax",Font.BOLD,24));
         ageLabel.setBackground(Color.PINK);
 
         enterAge=new JTextField(Constants.TEXT_FILED_COLUMNS);
-        enterAge.setMaximumSize(new Dimension(50,25));
+        enterAge.setMaximumSize(new Dimension(Constants.TEXT_FILED_WIDTH/4,Constants.TEXT_FILED_HEIGHT));
+        //set text filed font the same as label font
         enterAge.setFont(ageLabel.getFont().deriveFont(Font.PLAIN, 18f));
 
        add(ageLabel);
@@ -24,6 +26,8 @@ public class AgePanel extends JPanel {
 
 
     }
+
+    //getters and setters
 
     public JLabel getAgeLabel() {
         return ageLabel;

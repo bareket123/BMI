@@ -12,6 +12,7 @@ public class BmiPanel extends JPanel {
     private UserHeight userHeightSlider;
     private BmiCalculationsPanel bmiCalculationsPanel;
 
+    //Constructor: set up the main panel which contains all the other panels ordered in border layout and submit and clear buttons.
     public BmiPanel() {
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(Constants.BMI_PANEL_WIDTH, Constants.BMI_PANEL_HEIGHT-10));
@@ -23,15 +24,16 @@ public class BmiPanel extends JPanel {
         submit = new JButton("Submit");
         submit.setFont(new Font("Ariel",Font.BOLD,20));
         submit.setBackground(Color.WHITE);
-        submit.setPreferredSize(new Dimension(100,30));
+        submit.setPreferredSize(new Dimension(Constants.BUTTON_WIDTH,Constants.BUTTON_HEIGHT));
         submit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         clear =new JButton("Clear");
         clear.setFont(new Font("Ariel",Font.BOLD,20));
-        clear.setPreferredSize(new Dimension(100,30));
+        clear.setPreferredSize(new Dimension(Constants.BUTTON_WIDTH,Constants.BUTTON_HEIGHT));
         clear.setBackground(Color.WHITE);
         clear.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        //add listener
         SubmitAndClearListener listener =new SubmitAndClearListener();
         submit.addActionListener(listener);
         clear.addActionListener(listener);
@@ -52,6 +54,7 @@ public class BmiPanel extends JPanel {
 
 
     }
+    //set up submit button
     private void setSubmitButtonOnClicked(){
         //create and add bmi calculate panel to weight panel for comparison
         this.bmiCalculationsPanel=new BmiCalculationsPanel(personData,userHeightSlider,bodyStructure);
@@ -65,24 +68,29 @@ public class BmiPanel extends JPanel {
 
 
     }
+    //set up clear button
     private void setClearButtonOnClicked(){
         personData.getFirstNamePanel().getEnterFirstName().setText(null);
         personData.getLastNamePanel().getEnterLastName().setText(null);
         personData.getAgePanel().getEnterAge().setText(null);
+        personData.getGenderPanel().getButtonGroup().clearSelection();
+
         userHeightSlider.getUserWeightPanel().getEnterUserWeight().setText(null);
         userHeightSlider.getHeightSlider().setValue(Constants.HEIGHT_SLIDER_START_VALUE);
         userHeightSlider.getHeightLabel().setText("height: ");
+
         bodyStructure.getButtonGroup().clearSelection();
-        personData.getGenderPanel().getButtonGroup().clearSelection();
+
         bmiCalculationsPanel.setVisible(false);
         bmiCalculationsPanel.getIdealWeight().setVisible(false);
+
         submit.setEnabled(true);
         clear.setEnabled(false);
     }
 
 
+    //  Represents the listener for submit and clear buttons
     private class SubmitAndClearListener implements ActionListener{
-
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -92,8 +100,6 @@ public class BmiPanel extends JPanel {
 
             }else if (source==clear){
                 setClearButtonOnClicked();
-
-
             }
 
         }

@@ -8,6 +8,7 @@ public class PersonData extends JPanel {
     private AgePanel agePanel;
     private Gender genderPanel;
 
+    //Constructor: sets up panel with 4 panels of person data: first and last name,age and gender
     public PersonData() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(Constants.PERSON_DATA_PANEL_WIDTH, Constants.PERSON_DATA_PANEL_HEIGHT));
@@ -28,6 +29,8 @@ public class PersonData extends JPanel {
 
 
     }
+
+    //getters and setters
 
     public FirstNamePanel getFirstNamePanel() {
         return firstNamePanel;

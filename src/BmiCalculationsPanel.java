@@ -10,12 +10,12 @@ public class BmiCalculationsPanel extends JPanel {
     private JLabel bmiStatus;
     private JLabel idealWeight;
 
-
+    //Constructor: sets up panel with labels of the result of user bmi.
     public BmiCalculationsPanel(PersonData personData,UserHeight userHeightSlider,BodyStructure bodyStructure){
 
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.setBackground(Color.PINK);
-        this.setPreferredSize(new Dimension(400,400));
+        this.setPreferredSize(new Dimension(Constants.BMI_CALCULATE_PANEL_WIDTH,Constants.BMI_CALCULATE_PANEL_HEIGHT));
 
         bmiResult=new JLabel();
         bmiResult.setForeground(Color.BLUE);
@@ -56,7 +56,7 @@ public class BmiCalculationsPanel extends JPanel {
         add(bmiStatus);
     }
 
-
+   //set status label accordance to bmi result
     private String setBmiStatusLabel(double userBmi){
         String userWeightStatus;
 
@@ -82,6 +82,8 @@ public class BmiCalculationsPanel extends JPanel {
 
         return userWeightStatus;
     }
+
+    //return ideal weight result calculation
     private double calculateIdealWeight(double userHeight,JTextField userAge,double slimness){
         double idealWeight=0;
         if (!isValidInput(userAge)){
@@ -89,25 +91,23 @@ public class BmiCalculationsPanel extends JPanel {
         }
 
            return idealWeight;
-
-
     }
+
+    //return bmi result calculation
     private double calculateBmiResult(UserHeight userHeightSlider){
         double realWeight,realHeight,bmi=0;
         JTextField enteredWeightText=userHeightSlider.getUserWeightPanel().getEnterUserWeight();
         if (!isValidInput(enteredWeightText)){
             realWeight=Double.parseDouble(enteredWeightText.getText());
             realHeight= userHeightSlider.getHeightSlider().getValue();
+
             //note: due to the fact that the user insert height in cmd we multiplied by 100 to get right bmi
             bmi=realWeight * Constants.CONVERSION_CENTIMETER_TO_METER * Constants.CONVERSION_CENTIMETER_TO_METER / (realHeight * realHeight);
-
-
         }
 
        return bmi;
-
     }
-    //check if age or weight is empty or contain characters
+    //check if age or weight is empty or contain characters/special characters
     private boolean isValidInput(JTextField textField){
        boolean isValidInput=false;
        //check for special characters like *, !, etc
@@ -126,6 +126,7 @@ public class BmiCalculationsPanel extends JPanel {
 
       return isValidInput;
     }
+    //return false when input invalid and set new warning and instructions labels
     private boolean checkIfInputValid(double idealWeightForUser,double finalBmi,UserHeight userHeightSlider,JTextField userAge){
         //check if ideal or bmi is 0 in this case the user enter something wrong
         boolean valid=true;
@@ -155,6 +156,7 @@ public class BmiCalculationsPanel extends JPanel {
     }
 
 
+    //getters and setters
     public JLabel getBmiResult() {
         return bmiResult;
     }

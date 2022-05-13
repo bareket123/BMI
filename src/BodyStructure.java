@@ -10,7 +10,7 @@ public class BodyStructure extends JPanel {
     private ButtonGroup buttonGroup;
     private double slimness;
 
-
+    //Constructor: sets up panel with bodyStructure label and some radio buttons.
     public BodyStructure() {
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         setBackground(Color.PINK);
@@ -36,6 +36,7 @@ public class BodyStructure extends JPanel {
         buttonGroup.add(medium);
         buttonGroup.add(large);
 
+        //add listener
         ButtonListener listener = new ButtonListener();
         small.addActionListener(listener);
         medium.addActionListener(listener);
@@ -52,6 +53,8 @@ public class BodyStructure extends JPanel {
 
 
     }
+
+    //getters and setters
 
     public JLabel getBodyStructureTitle() {
         return bodyStructureTitle;
