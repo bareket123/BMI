@@ -38,7 +38,7 @@ public class BmiCalculationsPanel extends JPanel {
         double finalBmi=calculateBmiResult(userHeightSlider);
         double idealWeightForUser=calculateIdealWeight(userHeightSlider.getHeightSlider().getValue(),userAgeTextFiled,bodyStructure.getSlimness());
 
-        if (checkIfInputValid(idealWeightForUser,finalBmi,userHeightSlider,userAgeTextFiled,isNameEmpty,isGenderButtonPressed) || bodyStructure.getSlimness()==0){
+        if (checkIfInputValid(idealWeightForUser,finalBmi,isNameEmpty,isGenderButtonPressed) || bodyStructure.getSlimness()==0){
             //set 3 digit after decimal point
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(3);
@@ -134,15 +134,12 @@ public class BmiCalculationsPanel extends JPanel {
     }
 
     //return false when input invalid and set new warning and instructions labels
-    private boolean checkIfInputValid(double idealWeight,double finalBmi,UserHeight slider,JTextField userAge,boolean isNameEmpty,boolean isGenderButtonPressed){
+    private boolean checkIfInputValid(double idealWeight,double finalBmi,boolean isNameEmpty,boolean isGenderButtonPressed){
         boolean valid=true;
 
         //check if ideal or bmi is 0 in this case the user enter something wrong
         if (idealWeight==0 || finalBmi==0 || isNameEmpty || !isGenderButtonPressed) {
             valid=false;
-
-            //slider.getUserWeightPanel().getEnterUserWeight().setText(null);
-           // userAge.setText(null);
 
             this.idealWeight.setVisible(false);
             bmiStatus.setVisible(false);

@@ -14,7 +14,7 @@ public class Bmi {
                 frame.setLocationRelativeTo(null);
           }
           catch (Exception e){
-             // System.out.println("error, dont make those mistakes we dont kow how to solved them");
+             e.printStackTrace();
           }
             }
         }
