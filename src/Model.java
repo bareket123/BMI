@@ -1,6 +1,6 @@
 
-//Set all the finals in one class (mostly sizes)
-public class Constants {
+//Model class
+public class Model {
     public static final int BMI_PANEL_WIDTH= 1000;
     public static final int  BMI_PANEL_HEIGHT= 700;
     public static final int NAME_PANEL_WIDTH =50;
@@ -38,8 +38,9 @@ public class Constants {
     public static final double SMALL_SLIMNESS=0.9;
     public static final int MEDIUM_SLIMNESS=1;
     public static final double LARGE_SLIMNESS=1.1;
-    public static final int HEIGHT_SLIDER_START_VALUE=140;
-    public static final String INVALID_CHARACTERS="[!@#$%&*()_+=|<>?{}\\[\\]~-]";
+    public static final int HEIGHT_SLIDER_MINIMUM_VALUE =140;
+    public static final int HEIGHT_SLIDER_MAXIMUM_VALUE=190;
+    public static final String INVALID_CHARACTERS="[!@#$'`%&*()_+=|<>?{}\\[\\]~-]";
 
 
 

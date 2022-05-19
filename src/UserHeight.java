@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class UserHeight extends JPanel{
@@ -12,14 +10,14 @@ public class UserHeight extends JPanel{
     public UserHeight(){
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.setBackground(Color.PINK);
-        this.setPreferredSize(new Dimension(Constants.USER_HEIGHT_PANEL_WIDTH,Constants.USER_HEIGHT_PANEL_HEIGHT));
+        this.setPreferredSize(new Dimension(Model.USER_HEIGHT_PANEL_WIDTH, Model.USER_HEIGHT_PANEL_HEIGHT));
         userWeightPanel =new UserWeight();
 
         heightLabel =new JLabel("Height: ");
         heightLabel.setFont(new Font("Monospaced",Font.BOLD,24));
         heightLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        heightSlider = new JSlider(JSlider.VERTICAL,140,190,165);
+        heightSlider = new JSlider(JSlider.VERTICAL,Model.HEIGHT_SLIDER_MINIMUM_VALUE,Model.HEIGHT_SLIDER_MAXIMUM_VALUE,165);
         heightSlider.setMajorTickSpacing(10);
         heightSlider.setMinorTickSpacing(1);
         heightSlider.setPaintTicks(true);
@@ -27,12 +25,9 @@ public class UserHeight extends JPanel{
         heightSlider.setFont(new Font("Monospaced",Font.BOLD,24));
         heightSlider.setBackground(Color.white);
         heightSlider.setAlignmentX(Component.LEFT_ALIGNMENT);
-        heightSlider.setValue(Constants.HEIGHT_SLIDER_START_VALUE);
-        heightSlider.setPreferredSize(new Dimension(Constants.SLIDER_WIDTH,Constants.SLIDER_HEIGHT ));
+        heightSlider.setValue(Model.HEIGHT_SLIDER_MINIMUM_VALUE);
+        heightSlider.setPreferredSize(new Dimension(Model.SLIDER_WIDTH, Model.SLIDER_HEIGHT ));
 
-        //add listener
-        SliderListener sliderListener=new SliderListener();
-        heightSlider.addChangeListener(sliderListener);
 
 
         add(Box.createRigidArea(new Dimension(0, 50)));
@@ -67,19 +62,7 @@ public class UserHeight extends JPanel{
         this.userWeightPanel = userWeightPanel;
     }
 
-//  Represents the listener for height slider.
-private class SliderListener implements ChangeListener {
-        private int currentHeight;
 
-    public void stateChanged(ChangeEvent event) {
-        this.currentHeight = heightSlider.getValue();
-        if (currentHeight!=Constants.USER_HEIGHT_PANEL_HEIGHT)
-        heightLabel.setText("chosen height " + currentHeight);
-        heightLabel.setForeground(Color.yellow);
-
-    }
-
-}
 
 
 }

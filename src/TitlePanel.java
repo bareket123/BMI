@@ -9,7 +9,7 @@ public class TitlePanel extends JPanel {
     public TitlePanel(){
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.setBackground(Color.white);
-        this.setPreferredSize(new Dimension(Constants.BMI_PANEL_WIDTH,50));
+        this.setPreferredSize(new Dimension(Model.BMI_PANEL_WIDTH,50));
 
         mainTitleLabel=new JLabel("Bmi Calculator");
         mainTitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);

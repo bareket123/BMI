@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class BodyStructure extends JPanel {
 
@@ -14,7 +12,7 @@ public class BodyStructure extends JPanel {
     public BodyStructure() {
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         setBackground(Color.PINK);
-        setPreferredSize(new Dimension(Constants.BODY_STRUCTURE_PANEL_WIDTH, Constants.BODY_STRUCTURE_PANEL_HEIGHT));
+        setPreferredSize(new Dimension(Model.BODY_STRUCTURE_PANEL_WIDTH, Model.BODY_STRUCTURE_PANEL_HEIGHT));
 
         bodyStructureTitle = new JLabel("body structure:");
         bodyStructureTitle.setFont(new Font("Lucida Fax", Font.BOLD, 24));
@@ -36,11 +34,6 @@ public class BodyStructure extends JPanel {
         buttonGroup.add(medium);
         buttonGroup.add(large);
 
-        //add listener
-        ButtonListener listener = new ButtonListener();
-        small.addActionListener(listener);
-        medium.addActionListener(listener);
-        large.addActionListener(listener);
 
         add(Box.createRigidArea(new Dimension(170, 170)));
         add(bodyStructureTitle);
@@ -103,25 +96,6 @@ public class BodyStructure extends JPanel {
 
     public void setButtonGroup(ButtonGroup buttonGroup) {
         this.buttonGroup = buttonGroup;
-    }
-
-    //  Represents the listener for all radio buttons
-    private class ButtonListener implements ActionListener {
-
-        //  Sets the slimness value depending on which radio
-        //  button was pressed.
-        public void actionPerformed(ActionEvent event) {
-            Object source = event.getSource();
-            if (source==small) {
-                slimness=Constants.SMALL_SLIMNESS;
-            }else if (source==medium){
-                slimness=Constants.MEDIUM_SLIMNESS;
-            }else {
-                slimness=Constants.LARGE_SLIMNESS;
-            }
-
-
-        }
     }
 
 

@@ -9,13 +9,13 @@ public class FirstNamePanel extends JPanel {
     //Constructor: set up a panel with first name label and text filed for user input
     public FirstNamePanel(){
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
-        this.setPreferredSize(new Dimension(Constants.NAME_PANEL_WIDTH,Constants.NAME_PANEL_HEIGHT));
+        this.setPreferredSize(new Dimension(Model.NAME_PANEL_WIDTH, Model.NAME_PANEL_HEIGHT));
         this.setBackground(Color.PINK);
         firstName = new JLabel("First name:");
         firstName.setBackground(Color.PINK);
         firstName.setFont(new Font("Lucida Fax",Font.BOLD,24));
-        enterFirstName = new JTextField(Constants.TEXT_FILED_COLUMNS);
-        enterFirstName.setMaximumSize(new Dimension(Constants.TEXT_FILED_WIDTH,Constants.TEXT_FILED_HEIGHT));
+        enterFirstName = new JTextField(Model.TEXT_FILED_COLUMNS);
+        enterFirstName.setMaximumSize(new Dimension(Model.TEXT_FILED_WIDTH, Model.TEXT_FILED_HEIGHT));
         //Set text filed font same as label
         enterFirstName.setFont(firstName.getFont().deriveFont(Font.PLAIN, 25f));
 

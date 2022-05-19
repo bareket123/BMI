@@ -10,7 +10,7 @@ public class Gender extends JPanel {
 //Constructor: set a panel with gender label and some button for male/female
     public Gender() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setPreferredSize(new Dimension(Constants.GENDER_PANEL_WIDTH, Constants.GENDER_PANEL_HEIGHT));
+        this.setPreferredSize(new Dimension(Model.GENDER_PANEL_WIDTH, Model.GENDER_PANEL_HEIGHT));
         this.setBackground(Color.PINK);
 
 

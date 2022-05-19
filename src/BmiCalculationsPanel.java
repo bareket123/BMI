@@ -15,7 +15,7 @@ public class BmiCalculationsPanel extends JPanel {
 
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.setBackground(Color.PINK);
-        this.setPreferredSize(new Dimension(Constants.BMI_CALCULATE_PANEL_WIDTH,Constants.BMI_CALCULATE_PANEL_HEIGHT));
+        this.setPreferredSize(new Dimension(Model.BMI_CALCULATE_PANEL_WIDTH, Model.BMI_CALCULATE_PANEL_HEIGHT));
 
         bmiResult=new JLabel();
         bmiResult.setForeground(Color.BLUE);
@@ -29,16 +29,16 @@ public class BmiCalculationsPanel extends JPanel {
         bmiStatus.setForeground(Color.RED);
         bmiStatus.setFont(new Font("Ink Free",Font.BOLD,24));
 
-        //true if names are empty, if so, won't display bmi calculations.
+        //true if names are empty, if so, won't display bmi calculations. for checkIfInputValid function
         boolean isNameEmpty=isNameEmpty(personData.getFirstNamePanel().getEnterFirstName(), personData.getLastNamePanel().getEnterLastName());
-        //true is button is pressed as expected.
+        //true if button is pressed as expected.for checkIfInputValid function
         boolean isGenderButtonPressed=isGenderButtonPressed(personData.getGenderPanel());
 
         JTextField userAgeTextFiled=personData.getAgePanel().getEnterAge();
         double finalBmi=calculateBmiResult(userHeightSlider);
         double idealWeightForUser=calculateIdealWeight(userHeightSlider.getHeightSlider().getValue(),userAgeTextFiled,bodyStructure.getSlimness());
 
-        if (checkIfInputValid(idealWeightForUser,finalBmi,isNameEmpty,isGenderButtonPressed) || bodyStructure.getSlimness()==0){
+        if (checkIfInputValid(idealWeightForUser,finalBmi,isNameEmpty,isGenderButtonPressed,bodyStructure.getSlimness())){
             //set 3 digit after decimal point
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(3);
@@ -66,19 +66,19 @@ public class BmiCalculationsPanel extends JPanel {
     private String setBmiStatusLabel(double userBmi){
         String userWeightStatus;
 
-        if (userBmi<Constants.ANOREXIC){
+        if (userBmi< Model.ANOREXIC){
             userWeightStatus="Anorexic";
         }
-        else if (userBmi>=Constants.ANOREXIC && userBmi<18.5){
+        else if (userBmi>= Model.ANOREXIC && userBmi<18.5){
             userWeightStatus="Underweight ";
         }
-        else if(userBmi>=Constants.UNDER_WEIGHT && userBmi<Constants.NORMAL){
+        else if(userBmi>= Model.UNDER_WEIGHT && userBmi< Model.NORMAL){
             userWeightStatus="Normal";
         }
-        else if (userBmi>=Constants.NORMAL && userBmi<Constants.OVER_WEIGHT){
+        else if (userBmi>= Model.NORMAL && userBmi< Model.OVER_WEIGHT){
             userWeightStatus="Overweight";
         }
-        else if(userBmi>=Constants.OBESE && userBmi<Constants.EXTRA_OBESE){
+        else if(userBmi>= Model.OBESE && userBmi< Model.EXTRA_OBESE){
             userWeightStatus="Obese";
         }
         else {
@@ -92,7 +92,7 @@ public class BmiCalculationsPanel extends JPanel {
     //return ideal weight result calculation
     private double calculateIdealWeight(double userHeight,JTextField userAge,double slimness){
         double idealWeight=0;
-        if (!isValidInput(userAge)){
+        if (isValidInput(userAge)){
             idealWeight= (userHeight-100+(Double.parseDouble(userAge.getText())/10))*0.9*slimness;
         }
 
@@ -103,42 +103,42 @@ public class BmiCalculationsPanel extends JPanel {
     private double calculateBmiResult(UserHeight userHeightSlider){
         double realWeight,realHeight,bmi=0;
         JTextField enteredWeightText=userHeightSlider.getUserWeightPanel().getEnterUserWeight();
-        if (!isValidInput(enteredWeightText)){
+        if (isValidInput(enteredWeightText)){
             realWeight=Double.parseDouble(enteredWeightText.getText());
             realHeight= userHeightSlider.getHeightSlider().getValue();
 
             //note: due to the fact that the user insert height in cmd we multiplied by 100 to get right bmi
-            bmi=realWeight * Constants.CONVERSION_CENTIMETER_TO_METER * Constants.CONVERSION_CENTIMETER_TO_METER / (realHeight * realHeight);
+            bmi= Model.CONVERSION_CENTIMETER_TO_METER * Model.CONVERSION_CENTIMETER_TO_METER*realWeight / (realHeight * realHeight);
         }
 
        return bmi;
     }
-    //check if age or weight is empty or contain characters/special characters
+    //check if textFiled is empty or contain letters/special characters
     private boolean isValidInput(JTextField textField){
-       boolean isNotValidInput=false;
+       boolean isValidInput=true;
        //check for special characters like *, !, etc
-        Pattern special = Pattern.compile (Constants.INVALID_CHARACTERS);
-        Matcher hasSpecial = special.matcher(textField.getText());
+        Pattern special = Pattern.compile (Model.INVALID_CHARACTERS);
+        Matcher hasSpecialCharacter = special.matcher(textField.getText());
 
-        if (textField.getText().isEmpty() || hasSpecial.find()){
-           isNotValidInput=true;
+        if (textField.getText().isEmpty() || hasSpecialCharacter.find()){
+           isValidInput=false;
         }
         for (char character:textField.getText().toCharArray()) {
             if (Character.isAlphabetic(character) ){
-                isNotValidInput=true;
+                isValidInput=false;
                 break;
             }
         }
 
-      return isNotValidInput;
+      return isValidInput;
     }
 
     //return false when input invalid and set new warning and instructions labels
-    private boolean checkIfInputValid(double idealWeight,double finalBmi,boolean isNameEmpty,boolean isGenderButtonPressed){
+    private boolean checkIfInputValid(double idealWeight,double finalBmi,boolean isNameEmpty,boolean isGenderButtonPressed, double slimness){
         boolean valid=true;
 
         //check if ideal or bmi is 0 in this case the user enter something wrong
-        if (idealWeight==0 || finalBmi==0 || isNameEmpty || !isGenderButtonPressed) {
+        if (idealWeight==0 || finalBmi==0 || isNameEmpty || !isGenderButtonPressed || slimness==0) {
             valid=false;
 
             this.idealWeight.setVisible(false);

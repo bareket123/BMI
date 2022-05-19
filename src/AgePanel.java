@@ -9,15 +9,15 @@ public class AgePanel extends JPanel {
 //Constructor: sep up a panel with age label and text filed for user input
     public AgePanel(){
         this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
-        this.setPreferredSize(new Dimension(Constants.AGE_PANEL_WIDTH,Constants.AGE_PANEL_HEIGHT));
+        this.setPreferredSize(new Dimension(Model.AGE_PANEL_WIDTH, Model.AGE_PANEL_HEIGHT));
         this.setBackground(Color.PINK);
 
         ageLabel = new JLabel("Age: ");
         ageLabel.setFont(new Font("Lucida Fax",Font.BOLD,24));
         ageLabel.setBackground(Color.PINK);
 
-        enterAge=new JTextField(Constants.TEXT_FILED_COLUMNS);
-        enterAge.setMaximumSize(new Dimension(Constants.TEXT_FILED_WIDTH/4,Constants.TEXT_FILED_HEIGHT));
+        enterAge=new JTextField(Model.TEXT_FILED_COLUMNS);
+        enterAge.setMaximumSize(new Dimension(Model.TEXT_FILED_WIDTH/4, Model.TEXT_FILED_HEIGHT));
         //set text filed font the same as label font
         enterAge.setFont(ageLabel.getFont().deriveFont(Font.PLAIN, 18f));
 
